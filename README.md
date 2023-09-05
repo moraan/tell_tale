@@ -2,7 +2,7 @@
 
 # Anthony Lam (alam31@uic.edu) & Alexander Moran (amoran9@uic.edu)
 
-# Your GitHub repository link goes here
+# [Your GitHub repository link goes here](https://github.com/moraan/asset_alchemy)
 If you have a private repository, please add `kaytwo` and `sauravjoshi` as collaborators.
 
 ## What does your application do?
