@@ -2,7 +2,7 @@
 
 # Anthony Lam (alam31@uic.edu), Alexander Moran (amoran9@uic.edu), & Herman Contreras (hcontr4@uic.edu0
 
-# https://github.com/moraan/tell_tale
+# https://telltale484.netlify.app/
 
 ## What does your application do?
 TellTale is an interactive storytelling web application where stories become immersive. Users will be able to create their own stories and read them out load. As the user reads out loud, the app responds with immersive sound effects when words selected by the user are triggered.
