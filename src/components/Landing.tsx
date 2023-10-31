@@ -9,6 +9,10 @@ function Landing() {
       <Link to="/diagram">
         <button>Go to Diagram</button>
       </Link>
+      <Link to="/stories">
+        <button>Go to Story</button>
+      </Link>
+      
     </div>
   );
 }
