@@ -5,7 +5,7 @@ function Landing() {
   console.log();
   return (
     <div className="landing-container">
-      <h1>Welcome to the Landing Page</h1>
+      <h1>Welcome to Tell Tale</h1>
       <Link to="/login">
         <button>Login</button>
       </Link>
