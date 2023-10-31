@@ -12,6 +12,10 @@ function Landing() {
       <Link to="/signup">
         <button>Signup</button>
       </Link>
+      <Link to="/stories">
+        <button>Go to Story</button>
+      </Link>
+      
     </div>
   );
 }
