@@ -7,7 +7,8 @@ function WebSpeech({ storyText }) {
   const [isListening, setIsListening] = useState(false);
 
   const triggerWords = [
-    { voiceWord: 'egg', triggerWord: 'egg', soundPath: '/sounds/caterpillarsqueak.mp3' },
+    { voiceWord: 'moon', triggerWord: 'moon', soundPath: '/sounds/nightsound.mp3' },
+    { voiceWord: 'up', triggerWord: 'up', soundPath: '/sounds/caterpillarsqueak.mp3' },
     // Add more voice recognition words, trigger words, and sound paths
   ];
 
