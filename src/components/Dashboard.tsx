@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import supabase from "../config/supabaseClient";
 import { useNavigate } from "react-router-dom";
+import Stories from './Stories';
 
 function Dashboard() {
   const [user, setUser] = useState<any | null>(null);
@@ -42,6 +43,8 @@ function Dashboard() {
     <div>
       <h1>Hello, {user?.email}!</h1>
       <button onClick={handleLogout}>Logout</button>
+
+      <Stories />
     </div>
   );
 }
