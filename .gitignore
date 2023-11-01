@@ -23,12 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Ignore typical build directories and files
-node_modules
-dist
-dist-ssr
-*.local
-
 # Ignore image files
 *.jpg
 *.jpeg
