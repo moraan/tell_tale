@@ -3,7 +3,7 @@ import Howler from 'howler';
 
 function WebSpeech({ storyText }) {
   const [transcript, setTranscript] = useState('');
-  const [recognition, setRecognition] = useState<SpeechRecognition | null>(null); // Store the recognition instance
+  const [recognition, setRecognition] = useState<any | null>(null); // Store the recognition instance
   const [isListening, setIsListening] = useState(false);
 
   const triggerWords = [
