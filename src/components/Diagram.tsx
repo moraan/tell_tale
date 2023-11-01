@@ -8,7 +8,7 @@ function Diagram() {
       MVP - A predefined story, displaying text and image 
       illustrations with selected trigger words. When the story 
       is spoken out loud, the web speech API will put our spoken word 
-      into text , allowing to app to know the trigger word status.  The app 
+      into text, allowing the app to know the trigger word status.  The app 
       will play predefined sound effects associated with that word once the 
       trigger word status is set to true
     </figcaption>
