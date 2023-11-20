@@ -1,2 +1,7 @@
-// Used to import images 
-declare module '*.png';
+// Used to import images
+declare module "*.png";
+
+declare module "*.svg" {
+  const content: string;
+  export default content;
+}

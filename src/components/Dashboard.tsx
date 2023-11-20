@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import supabase from "../config/supabaseClient";
 import { useNavigate } from "react-router-dom";
-import Stories from './Stories';
+
+import Book from "./Book";
+
+// Book covers
+import hungryCover from "../assets/covers/hungry-caterpillar.svg";
 
 function Dashboard() {
   const [user, setUser] = useState<any | null>(null);
@@ -39,12 +43,44 @@ function Dashboard() {
     navigate("/"); // Redirecting to the landing page after logout.
   };
 
+  // Example catalog data
+  const catalog = [
+    {
+      id: 1,
+      title: "Hungry Caterpillar",
+      route: "/book/HungryCaterpillar",
+      image: hungryCover,
+    }, // Hungry caterpillar
+    { id: 2, title: "Story Book 2", route: "/book/book2" },
+    { id: 3, title: "Story Book 3", route: "/book/book3" },
+    // Add route property for each book
+  ];
+
+  const handleSelectBook = (bookRoute) => {
+    // Navigate to the book's route
+    navigate(bookRoute);
+  };
+
   return (
     <div>
       <h1>Hello, {user?.email}!</h1>
-      <button onClick={handleLogout}>Logout</button>
 
-      <Stories />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          overflowX: "auto",
+          padding: "10px",
+        }}
+      >
+        {catalog.map((book) => (
+          <Book
+            key={book.id}
+            book={book}
+            onSelect={() => handleSelectBook(book.route)}
+          />
+        ))}
+      </div>
     </div>
   );
 }
