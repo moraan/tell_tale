@@ -7,6 +7,7 @@ function WebSpeech({ storyText, bookName }) {
   const [recognition, setRecognition] = useState<any | null>(null); // store the recognition instance
   const [isListening, setIsListening] = useState(false); // knows state to determine if voice recognition is on
 
+  // Retrieve from supabase all the triggerwords and sounds associated with the book
   async function fetchTriggerWordsFromSupabase(bookName) {
     try {
       const { data, error } = await supabase
@@ -26,6 +27,7 @@ function WebSpeech({ storyText, bookName }) {
     }
   }
 
+  // Calls function to retrieve sounds and triggerwords
   useEffect(() => {
     const fetchData = async () => {
       const { data, error } = await fetchTriggerWordsFromSupabase(bookName);

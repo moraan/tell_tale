@@ -9,6 +9,8 @@ import Dashboard from "./components/Dashboard";
 
 // import different books
 import HungryCaterpillar from "./components/HungryCaterpillar";
+import BrownBear from "./components/BrownBear";
+import GoodnightMoon from "./components/GoodnightMoon";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
 
         {/* Add each book as a route */}
         <Route path="/book/hungryCaterpillar" element={<HungryCaterpillar />} />
+        <Route path="/book/brownBear" element={<BrownBear />} />
+        <Route path="/book/goodnightMoon" element={<GoodnightMoon />} />
       </Routes>
     </Router>
   );
