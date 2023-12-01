@@ -51,8 +51,8 @@ function Dashboard() {
       route: "/book/HungryCaterpillar",
       image: hungryCover,
     }, // Hungry caterpillar
-    { id: 2, title: "Story Book 2", route: "/book/book2" },
-    { id: 3, title: "Story Book 3", route: "/book/book3" },
+    { id: 2, title: "Goodnight Moon", route: "/book/GoodnightMoon" },
+    { id: 3, title: "Brown Bear, Brown Bear, What Do You See?", route: "/book/BrownBear" },
     // Add route property for each book
   ];
 

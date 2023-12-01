@@ -1,28 +1,5 @@
-import React from "react";
 import WebSpeech from "./WebSpeech";
-import caterpillar from "../assets/images/hungrycatepillar.jpeg";
-import full_moon from "../assets/images/full_moon.png";
-import hatch from "../assets/images/catepillar.png";
-import apple from "../assets/images/apple.png";
-import butterfly from "../assets/images/butterfly.png";
-import cake from "../assets/images/cake.png";
-import cheese from "../assets/images/cheese.png";
-import cocoon from "../assets/images/cocoon.png";
-import fat from "../assets/images/fat_catepillar.png";
-import hungry from "../assets/images/hungry.png";
-import ice from "../assets/images/ice_cream.png";
-import leaf from "../assets/images/leaf.png";
-import lollipop from "../assets/images/lollipop.png";
-import muffin from "../assets/images/muffin.png";
-import oranges from "../assets/images/oranges.png";
-import pears from "../assets/images/pears.png";
-import pickle from "../assets/images/pickle.png";
-import pie from "../assets/images/pie.png";
-import plums from "../assets/images/plums.png";
-import salami from "../assets/images/salami.png";
-import sausage from "../assets/images/sausage.png";
-import strawberries from "../assets/images/strawberries.png";
-import watermelon from "../assets/images/watermelon.png";
+import React from "react";
 
 const hungryCatepillar = () => {
   const bookName = 'The Very Hungry Caterpillar';
@@ -66,9 +43,9 @@ const hungryCatepillar = () => {
 
   return (
     <div>
-      <h1>The Very Hungry Caterpillar</h1>
+      <h1>{bookName}</h1>
       <h2>by Eric Carle</h2>
-      <img src={caterpillar} alt="A caterpillar" />
+      <img src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/hungrycatepillar.jpeg'} alt="A caterpillar" />
       <WebSpeech storyText={storyContent} bookName={bookName} />
       <br></br>
       <br></br>
@@ -76,7 +53,7 @@ const hungryCatepillar = () => {
         <p>In the light of the moon, a little egg lay on a leaf.</p>
         <img
           style={{ width: 800, height: 600 }}
-          src={full_moon}
+          src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/full_moon.png'}
           alt="The Moon Shines on an Egg"
         />
       </div>
@@ -87,7 +64,7 @@ const hungryCatepillar = () => {
         </p>
         <img
           style={{ width: 800, height: 600 }}
-          src={hatch}
+          src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/catepillar.png'}
           alt="Caterpillar Hatches"
         />
       </div>
@@ -95,7 +72,7 @@ const hungryCatepillar = () => {
         <p>He started to look for some food.</p>
         <img
           style={{ width: 800, height: 600 }}
-          src={hungry}
+          src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/hungry.png'}
           alt="a hungry caterpillar"
         />
       </div>
@@ -103,7 +80,7 @@ const hungryCatepillar = () => {
         <p>On Monday he ate through one apple. But he was still hungry.</p>
         <img
           style={{ width: 600, height: 600 }}
-          src={apple}
+          src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/apple.png'}
           alt="caterpillar and an apple"
         />
       </div>
@@ -111,7 +88,7 @@ const hungryCatepillar = () => {
         <p>On Tuesday, he ate through two pears, but he was still hungry.</p>
         <img
           style={{ width: 800, height: 700 }}
-          src={pears}
+          src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/pears.png'}
           alt="caterpillar and pears"
         />
       </div>
@@ -121,7 +98,7 @@ const hungryCatepillar = () => {
         </p>
         <img
           style={{ width: 800, height: 700 }}
-          src={plums}
+          src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/plums.png'}
           alt="caterpillar and plums"
         />
       </div>
@@ -132,7 +109,7 @@ const hungryCatepillar = () => {
         </p>
         <img
           style={{ width: 1100, height: 600 }}
-          src={strawberries}
+          src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/strawberries.png'}
           alt="caterpillar and strawberries"
         />
       </div>
@@ -140,7 +117,7 @@ const hungryCatepillar = () => {
         <p>On Friday, he ate through five oranges, but he was still hungry.</p>
         <img
           style={{ width: 800, height: 600 }}
-          src={oranges}
+          src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/oranges.png'}
           alt="oranges and caterpillar"
         />
       </div>
@@ -152,31 +129,31 @@ const hungryCatepillar = () => {
           slice of watermelon. That night he had a stomachache!
         </p>
         <div style={imgContainerStyle}>
-          <img style={{ width: 400, height: 400 }} src={cake} alt="cake" />
-          <img style={{ width: 400, height: 500 }} src={ice} alt="ice cream" />
-          <img style={{ width: 400, height: 500 }} src={pickle} alt="pickle" />
+          <img style={{ width: 400, height: 400 }} src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/cake.png'} alt="cake" />
+          <img style={{ width: 400, height: 500 }} src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/ice_cream.png'} alt="ice cream" />
+          <img style={{ width: 400, height: 500 }} src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/pickle.png'} alt="pickle" />
         </div>
         <div style={imgContainerStyle}>
-          <img style={{ width: 400, height: 500 }} src={cheese} alt="cheese" />
-          <img style={{ width: 400, height: 550 }} src={salami} alt="salami" />
+          <img style={{ width: 400, height: 500 }} src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/cheese.png'} alt="cheese" />
+          <img style={{ width: 400, height: 550 }} src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/salami.png'} alt="salami" />
           <img
             style={{ width: 400, height: 550 }}
-            src={lollipop}
+            src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/lollipop.png'}
             alt="lollipop"
           />
         </div>
         <div style={imgContainerStyle}>
-          <img style={{ width: 400, height: 400 }} src={pie} alt="pie" />
+          <img style={{ width: 400, height: 400 }} src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/pie.png'} alt="pie" />
           <img
             style={{ width: 400, height: 500 }}
-            src={sausage}
+            src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/sausage.png'}
             alt="sausage"
           />
-          <img style={{ width: 400, height: 500 }} src={muffin} alt="cupcake" />
+          <img style={{ width: 400, height: 500 }} src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/muffin.png'} alt="cupcake" />
         </div>
         <img
           style={{ width: 600, height: 500 }}
-          src={watermelon}
+          src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/watermelon.png'}
           alt="watermelon"
         />
       </div>
@@ -187,7 +164,7 @@ const hungryCatepillar = () => {
         </p>
         <img
           style={{ width: 800, height: 600 }}
-          src={leaf}
+          src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/leaf.png'}
           alt="caterpillar and leaf"
         />
       </div>
@@ -198,7 +175,7 @@ const hungryCatepillar = () => {
         </p>
         <img
           style={{ width: 900, height: 400 }}
-          src={fat}
+          src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/fat_catepillar.png'}
           alt="caterpillar is fat"
         />
       </div>
@@ -208,13 +185,13 @@ const hungryCatepillar = () => {
           inside for more than two weeks.
         </p>
         <p>Then he nibbled a hole in the cocoon, pushed his way out, and...</p>
-        <img style={{ width: 850, height: 600 }} src={cocoon} alt="a cocoon" />
+        <img style={{ width: 850, height: 600 }} src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/cocoon.png'} alt="a cocoon" />
       </div>
       <div style={divStyle}>
         <p>he was a beautiful butterfly.</p>
         <img
           style={{ width: 800, height: 600 }}
-          src={butterfly}
+          src={'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/The_Very_Hungry_Caterpillar/butterfly.png'}
           alt="butterfly"
         />
       </div>
