@@ -25,6 +25,7 @@ import strawberries from "../assets/images/strawberries.png";
 import watermelon from "../assets/images/watermelon.png";
 
 const hungryCatepillar = () => {
+  const bookName = 'The Very Hungry Caterpillar';
   const storyContent = `
   In the light of the moon, a little egg lay on a leaf.
 
@@ -68,7 +69,7 @@ const hungryCatepillar = () => {
       <h1>The Very Hungry Caterpillar</h1>
       <h2>by Eric Carle</h2>
       <img src={caterpillar} alt="A caterpillar" />
-      <WebSpeech storyText={storyContent} />
+      <WebSpeech storyText={storyContent} bookName={bookName} />
       <br></br>
       <br></br>
       <div style={divStyle}>

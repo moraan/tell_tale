@@ -1,31 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import Howler from 'howler';
+import supabase from "../config/supabaseClient";
 
-function WebSpeech({ storyText }) {
+function WebSpeech({ storyText, bookName }) {
   const [transcript, setTranscript] = useState(''); // store speech
   const [recognition, setRecognition] = useState<any | null>(null); // store the recognition instance
   const [isListening, setIsListening] = useState(false); // knows state to determine if voice recognition is on
 
-  // assinging trigger words and user voice words to sound path
-  // both user voice words and trigger words need to match in order to play sound
-  const triggerWords = [
-    { voiceWord: 'moon', triggerWord: 'moon', soundPath: '/sounds/nightsound.mp3' },
-    { voiceWord: 'up', triggerWord: 'up', soundPath: '/sounds/caterpillarsqueak.mp3' },
-    { voiceWord: 'hungry', triggerWord: 'hungry', soundPath: '/sounds/stomach_growl.mp3' },
-    { voiceWord: 'ate', triggerWord: 'ate', soundPath: '/sounds/eating.mp3' },
-    { voiceWord: 'built', triggerWord: 'built', soundPath: '/sounds/building.mp3' },
-    { voiceWord: 'cream', triggerWord: 'cream', soundPath: '/sounds/ice_cream.mp3' },
-    { voiceWord: 'pickle', triggerWord: 'pickle', soundPath: '/sounds/pickle.mp3' },
-    { voiceWord: 'lollipop', triggerWord: 'lollipop', soundPath: '/sounds/lollipop.mp3' },
-    { voiceWord: 'watermelon', triggerWord: 'watermelon', soundPath: '/sounds/watermelon.mp3' },
-    { voiceWord: 'stomach', triggerWord: 'stomach', soundPath: '/sounds/stomachache.mp3' },
-    { voiceWord: 'sunday', triggerWord: 'sunday', soundPath: '/sounds/bird.mp3' },
-    { voiceWord: 'better', triggerWord: 'better', soundPath: '/sounds/sigh.mp3' },
-    { voiceWord: 'fat', triggerWord: 'fat', soundPath: '/sounds/fat.mp3' },
-    { voiceWord: 'nibbled', triggerWord: 'nibbled', soundPath: '/sounds/Nibble.mp3' },
-    { voiceWord: 'butterfly', triggerWord: 'butterfly', soundPath: '/sounds/wings.mp3' },
-    // Add more voice recognition words, trigger words, and sound paths
-  ];
+  async function fetchTriggerWordsFromSupabase(bookName) {
+    try {
+      const { data, error } = await supabase
+        .from('triggerwords')
+        .select('word, sound_url')
+        .eq('book', bookName); // Assuming 'book' is the column in your table for book names
+  
+      if (error) {
+        console.error(`Error fetching data from triggerwords for book ${bookName}:`, error);
+        return { data: null, error };
+      }
+  
+      return { data, error: null };
+    } catch (error) {
+      console.error('Error:', error);
+      return { data: null, error };
+    }
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data, error } = await fetchTriggerWordsFromSupabase(bookName);
+
+      if (error) {
+        console.error('Error fetching trigger words:', error);
+        return;
+      }
+
+      if (data) {
+        data.forEach((wordObj) => {
+          const regex = new RegExp(`\\b${wordObj.word}\\b`, 'gi');
+
+          if (regex.test(transcript)) {
+            const sound = new Howler.Howl({ src: [wordObj.sound_url] });
+            sound.play();
+          }
+        });
+      }
+    };
+
+    fetchData();
+  }, [storyText, transcript]);
 
   // begins voice recognition
   const startListening = () => {
@@ -39,17 +62,6 @@ function WebSpeech({ storyText }) {
     newRecognition.onresult = (event) => {
       const currentTranscript = event.results[event.results.length - 1][0].transcript.toLowerCase();
       setTranscript(currentTranscript); // update transcipt from users speech
-
-
-      
-      triggerWords.forEach((wordObj) => {
-        const regex = new RegExp(`\\b${wordObj.voiceWord}\\b`, 'gi');
-
-        if (regex.test(currentTranscript)) {
-          const sound = new Howler.Howl({ src: [wordObj.soundPath] });
-          sound.play();
-        }
-      });
     };
 
     // voice recognition is over
