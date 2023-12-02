@@ -6,6 +6,9 @@ function WebSpeech({ storyText, bookName }) {
   const [transcript, setTranscript] = useState(''); // store speech
   const [recognition, setRecognition] = useState<any | null>(null); // store the recognition instance
   const [isListening, setIsListening] = useState(false); // knows state to determine if voice recognition is on
+  const [selectWord, setSelectWord] = useState<Set<string>>(new Set());
+  const [isWordSelectLock, setIsWordSelectLock] = useState(false);
+  const [triggerWordsData, setTriggerWordsData] = useState<{ word: string; sound_url: string }[]>([]);
 
   // Retrieve from supabase all the triggerwords and sounds associated with the book
   async function fetchTriggerWordsFromSupabase(bookName) {
@@ -18,6 +21,10 @@ function WebSpeech({ storyText, bookName }) {
       if (error) {
         console.error(`Error fetching data from triggerwords for book ${bookName}:`, error);
         return { data: null, error };
+      }
+
+      if (data) {
+        setTriggerWordsData(data);
       }
   
       return { data, error: null };
@@ -39,11 +46,13 @@ function WebSpeech({ storyText, bookName }) {
 
       if (data) {
         data.forEach((wordObj) => {
-          const regex = new RegExp(`\\b${wordObj.word}\\b`, 'gi');
+          if (selectWord.has(wordObj.word)) {
+            const regex = new RegExp(`\\b${wordObj.word}\\b`, 'gi');
 
-          if (regex.test(transcript)) {
-            const sound = new Howler.Howl({ src: [wordObj.sound_url] });
-            sound.play();
+            if (regex.test(transcript)) {
+              const sound = new Howler.Howl({ src: [wordObj.sound_url] });
+              sound.play();
+            }
           }
         });
       }
@@ -54,6 +63,11 @@ function WebSpeech({ storyText, bookName }) {
 
   // begins voice recognition
   const startListening = () => {
+    if (!isWordSelectLock) {
+      setIsWordSelectLock(true);
+      setSelectWord(new Set());
+    }
+
     if (recognition) {
       recognition.stop();
     }
@@ -84,6 +98,21 @@ function WebSpeech({ storyText, bookName }) {
     }
   };
 
+const handleTriggerChange = (e) => {
+  if (!isListening) {
+    const {value} = e.target;
+    setSelectWord((prevTriggers) => {
+      const newTriggers = new Set(prevTriggers);
+      if (newTriggers.has(value)) {
+        newTriggers.delete(value);
+      } else {
+        newTriggers.add(value);
+      }
+      return newTriggers;
+    });
+  }
+};
+
   useEffect(() => {
     if (recognition) {
       recognition.stop();
@@ -98,16 +127,30 @@ function WebSpeech({ storyText, bookName }) {
   }, [storyText]);
 
   return (
-    <div>
+    <div style={{display:'felx', flexDirection:'column', alignItems:'flex-start'}}>
       <h2>Web Speech API</h2>
       <p>{transcript}</p>
-
-      <button onClick={startListening} disabled={isListening}>
-        Start Reading
-      </button>
-      <button onClick={stopListening} disabled={!isListening}>
-        Stop Reading
-      </button>
+      
+      <label style={{marginBottom: '10px'}}>1. Select Trigger Words to Enable/Disable:</label>
+        <select multiple value={Array.from(selectWord)} onChange={handleTriggerChange}
+          style={{width:'100px', height:'150px', marginBottom: '10px'}}
+          disabled={isListening}>
+          {triggerWordsData.map((wordObj) => (
+            <option key={wordObj.word} value={wordObj.word}>
+              {wordObj.word}
+            </option>
+          ))}
+        </select>
+      <label style={{marginLeft:'20px', marginRight:'10px'}}>
+        2.
+        <button onClick={startListening} disabled={isListening}
+          style={{marginRight:'10px', marginBottom:'10px'}}>
+          Start Reading
+        </button>
+        <button onClick={stopListening} disabled={!isListening}>
+          Stop Reading
+        </button>
+      </label>
     </div>
   );
 }
