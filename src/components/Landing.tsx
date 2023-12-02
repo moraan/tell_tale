@@ -1,8 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import supabase from "../config/supabaseClient"; // Ensure this path is correct
 
 function Landing() {
-  console.log();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkIfLoggedIn = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (session) {
+        navigate("/dashboard");
+      }
+    };
+
+    checkIfLoggedIn();
+  }, [navigate]);
+
   return (
     <div className="landing-container">
       <h1>Welcome to Tell Tale</h1>
@@ -12,7 +28,6 @@ function Landing() {
       <Link to="/signup">
         <button>Signup</button>
       </Link>
-      
     </div>
   );
 }
