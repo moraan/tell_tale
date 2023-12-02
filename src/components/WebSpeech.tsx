@@ -23,6 +23,7 @@ function WebSpeech({ storyText, bookName }) {
         return { data: null, error };
       }
 
+      // Set trigger words data
       if (data) {
         setTriggerWordsData(data);
       }
