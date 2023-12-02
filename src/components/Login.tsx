@@ -26,6 +26,7 @@ function Login() {
     } = await supabase.auth.getSession();
     if (session) {
       navigate("/dashboard");
+      window.location.reload(); // Reload the page after navigating
     }
   };
 
