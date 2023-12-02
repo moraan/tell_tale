@@ -63,7 +63,7 @@ function Header() {
             style={{
               //backgroundColor: "transparent",
               border: "none",
-              color: "white",
+              color: "black",
               cursor: "pointer",
             }}
           >
