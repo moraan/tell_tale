@@ -51,8 +51,8 @@ function Dashboard() {
       route: "/book/HungryCaterpillar",
       image: hungryCover,
     }, // Hungry caterpillar
-    { id: 2, title: "Goodnight Moon", route: "/book/GoodnightMoon" },
-    { id: 3, title: "Brown Bear, Brown Bear, What Do You See?", route: "/book/BrownBear" },
+    { id: 2, title: "Goodnight Moon", route: "/book/GoodnightMoon", image: 'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/Goodnight_Moon/goodnight_moon.png' },
+    { id: 3, title: "Brown Bear, Brown Bear, What Do You See?", route: "/book/BrownBear", image: 'https://kmbhxkpplgffblgbbjsw.supabase.co/storage/v1/object/public/images/Brown_Bear/cover.jpg'},
     // Add route property for each book
   ];
 
